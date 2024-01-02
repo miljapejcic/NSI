@@ -1,0 +1,44 @@
+
+
+<div class="p-8 max-w-md mx-auto bg-gray-100 shadow-md rounded-md">
+  <h2 class="text-2xl font-semibold mb-4"> {{isLoginForm ? 'Login Page':'Registration Page'}}</h2>
+  <div *ngIf="isLoginForm">
+    <form [formGroup]="loginForm">
+      <div class="mb-4">
+        <label for="username" class="block text-sm font-medium text-gray-600">Username:</label>
+        <input type="text" id="username" formControlName="username" class="mt-1 p-2 w-full border rounded-md">
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="block text-sm font-medium text-gray-600">Password:</label>
+        <input type="password" id="password" formControlName="password" class="mt-1 p-2 w-full border rounded-md">
+      </div>
+
+      <button (click)="login()" class="bg-blue-500 text-white p-2 rounded-md">Login</button>
+    </form>
+  </div>
+  <div *ngIf="!isLoginForm">
+    <form [formGroup]="registrationForm">
+      <div class="mb-4">
+        <label for="name" class="block text-sm font-medium text-gray-600">Name:</label>
+        <input type="text" id="name" formControlName="name" class="mt-1 p-2 w-full border rounded-md">
+      </div>
+      <div class="mb-4">
+        <label for="username" class="block text-sm font-medium text-gray-600">Username:</label>
+        <input type="text" id="username" formControlName="username" class="mt-1 p-2 w-full border rounded-md">
+      </div>
+      <div class="mb-4">
+        <label for="password" class="block text-sm font-medium text-gray-600">Password:</label>
+        <input type="password" id="password" formControlName="password" class="mt-1 p-2 w-full border rounded-md">
+      </div>
+      <button (click)="register()" class="bg-blue-500 text-white p-2 rounded-md">Register</button>
+    </form>
+  </div>
+
+  <p class="mt-4">
+    {{ isLoginForm ? "Don't have an account? " : "Already have an account? " }}
+    <a href="javascript:void(0)" (click)="toggleForm()">
+      {{ isLoginForm ? "Register" : "Login" }}
+    </a>
+  </p>
+</div>
