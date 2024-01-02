@@ -34,7 +34,8 @@ const LoginUser = async (req, res) => {
                 let sendInfo = {
                     id: user._id,
                     username: user.username,
-                    token: token
+                    token: token,
+                    name: user.name
                 }
                 res.status(200).send(sendInfo)
             }
