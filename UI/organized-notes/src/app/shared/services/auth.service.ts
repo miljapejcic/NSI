@@ -19,6 +19,8 @@ export class AuthService {
     this.http.post<AuthUser>(this.apiUrl + 'registerUser', userData).subscribe((response) => {
       this.currentUserSignal.set(response);
       localStorage.setItem('token', response.token);
+      localStorage.setItem('id', response.id);
+
       this.router.navigate(['/']);
     })
   }
@@ -27,12 +29,14 @@ export class AuthService {
     this.http.post<AuthUser>(this.apiUrl + 'loginUser', userData).subscribe((response) => {
       this.currentUserSignal.set(response);
       localStorage.setItem('token', response.token);
+      localStorage.setItem('id', response.id);
       this.router.navigate(['/']);
     })
   }
 
   logout(){
     localStorage.setItem('token', '');
+    localStorage.setItem('id', '');
     this.currentUserSignal.set(null);
     this.router.navigate(['/register']);
   }
@@ -40,7 +44,7 @@ export class AuthService {
   getUser(){
     if(localStorage.getItem('token')){
       const data = {
-        totken:localStorage.getItem('token')
+        token:localStorage.getItem('token')
       }
       this.http.post<AuthUser>(this.apiUrl + 'getUser', data).subscribe((response) => {
         this.currentUserSignal.set(response);

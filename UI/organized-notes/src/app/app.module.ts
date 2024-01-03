@@ -10,6 +10,7 @@ import { ListDetailsComponent } from './components/list-details/list-details.com
 import { ItemDetailsComponent } from './components/item-details/item-details.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ListDetailsComponent,
     ItemDetailsComponent,
     SideMenuComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

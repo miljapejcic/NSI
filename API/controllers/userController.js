@@ -67,7 +67,7 @@ const LoginUser = async (req, res) => {
 
 const VerifyUser = async (req, res) => {
     try {
-        const token = req.body.totken;
+        const token = req.body.token;
         if (!token) {
             return res.status(403).send('Token not provided');
         }

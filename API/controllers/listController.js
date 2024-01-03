@@ -33,7 +33,7 @@ const GetUsersLists = async (req, res) => {
 const GetList = async (req, res) => {
     try {
         const listId = req.params.listId;
-        let list = await List.findOne({ userId });
+        let list = await List.findOne({ _id:listId });
         let itemList = await Item.find({ listId });
         let sendInfo = {
             list: list,

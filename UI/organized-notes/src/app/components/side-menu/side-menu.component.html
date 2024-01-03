@@ -1,1 +1,10 @@
-<p>side-menu works!</p>
+<aside class="bg-indigo-950 text-white h-screen translate-y-[72px] w-1/4 fixed top-0 left-0">
+  <div class="p-4">
+    <h2 class="text-xl font-semibold mb-4">Menu</h2>
+    <div *ngFor="let list of lists">
+      <button (click)="selectList(list._id)" [ngClass]="{'bg-blue-500 text-white': list._id === selectedListId}">
+        {{list.name}}
+      </button>
+    </div>
+  </div>
+</aside>

@@ -1,6 +1,7 @@
 export interface List {
-    id: string,
+    _id: string,
     name: string,
     color?: string,
-    userId: string
+    userId: string,
+    __v: number
 }

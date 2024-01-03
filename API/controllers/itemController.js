@@ -6,7 +6,7 @@ const CreateItem = async (req, res) => {
             name: req.body.name,
             description: req.body.description,
             isDone: false,
-            listId: req.params.companyID,
+            listId: req.params.listId,
         }).then(item => {
             res.status(200).send(item)
         }).catch(err => {

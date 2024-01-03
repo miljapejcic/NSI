@@ -1,6 +1,8 @@
 export interface Item {
-    id: string,
+    _id: string,
     name: string,
     description?: string,
-    listId: string
+    isDone: boolean,
+    listId: string,
+    __v: number
 }

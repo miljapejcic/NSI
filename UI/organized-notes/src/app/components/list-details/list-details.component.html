@@ -1,1 +1,8 @@
-<p>list-details works!</p>
+<div class="translate-x-96">
+    <h4>{{currentListDetail?.list?.name}}</h4>
+    <div *ngFor="let item of currentListDetail?.itemList">
+        <input type="checkbox" id="checkboxExample" class="form-checkbox h-5 w-5 text-blue-500" [(ngModel)]="item.isDone">
+        <p>{{item.isDone}}</p>
+        <p>{{item.name}}</p>
+    </div>
+</div>
