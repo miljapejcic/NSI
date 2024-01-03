@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { List } from '../../shared/interfaces/list.interface';
 import { ApiService } from '../../shared/services/api.service';
+import { Item } from '../../shared/interfaces/item.interface';
 
 @Component({
   selector: 'app-side-menu',
@@ -10,6 +11,9 @@ import { ApiService } from '../../shared/services/api.service';
 export class SideMenuComponent implements OnInit {
   lists:List[] | null = [];
   selectedListId!: string;
+
+  @Output() selectedItemChange = new EventEmitter<Item | null>();
+
 
   constructor(private apiService: ApiService){
   }
@@ -24,5 +28,8 @@ export class SideMenuComponent implements OnInit {
   selectList(listId: string){
     this.apiService.getList(listId);
     this.selectedListId = listId;
+    this.selectedItemChange.emit(null);
   }
+
+
 }

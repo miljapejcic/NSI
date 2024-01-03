@@ -8,7 +8,7 @@ import { ListDetailsComponent } from './components/list-details/list-details.com
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [authGuard] },
   { path: 'register', component: RegisterComponent },
-  { path: 'list/:id', component: HomeComponent },
+  { path: 'list/:id', component: HomeComponent, canActivate: [authGuard]  },
 ];
 
 @NgModule({

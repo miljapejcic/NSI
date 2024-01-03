@@ -1,8 +1,12 @@
-<div class="translate-x-96">
-    <h4>{{currentListDetail?.list?.name}}</h4>
-    <div *ngFor="let item of currentListDetail?.itemList">
-        <input type="checkbox" id="checkboxExample" class="form-checkbox h-5 w-5 text-blue-500" [(ngModel)]="item.isDone">
-        <p>{{item.isDone}}</p>
-        <p>{{item.name}}</p>
-    </div>
-</div>
+<div class="max-w-md mx-auto p-4">
+    <h2 class="text-2xl font-semibold mb-4">{{ currentListDetail?.list?.name }}</h2>
+  
+    <ul>
+      <li *ngFor="let item of currentListDetail?.itemList" class="flex items-center mb-2">
+        <input type="checkbox" id="{{ item._id }}" [(ngModel)]="item.isDone" class="form-checkbox h-5 w-5 text-blue-500">
+        <label for="{{ item._id }}" class="ml-2 {{ item.isDone ? 'line-through text-gray-500' : '' }}" (click)="selectItem(item)">
+          {{ item.name }}
+        </label>
+      </li>
+    </ul>
+  </div>

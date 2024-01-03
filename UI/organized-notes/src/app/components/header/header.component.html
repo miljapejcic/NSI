@@ -1,7 +1,6 @@
 <header class="bg-indigo-300 p-4 text-white">
     <div class="container mx-auto flex justify-between items-center">
       <h1 class="text-2xl font-semibold">Organized Notes</h1>
-      
       <div class="text-right flex flex-row items-center">
         <p class="text-xl pr-4">Welcome, {{ authService.currentUserSignal()?.name }}</p>
         <button class="bg-indigo-800 text-white px-4 py-2 rounded flex items-center justify-center" (click)="logout()">Logout</button>

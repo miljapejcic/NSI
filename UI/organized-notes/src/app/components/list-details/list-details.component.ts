@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ListDetails } from '../../shared/interfaces/listDetails.interface';
 import { ApiService } from '../../shared/services/api.service';
+import { Item } from '../../shared/interfaces/item.interface';
 
 @Component({
   selector: 'app-list-details',
@@ -10,6 +11,8 @@ import { ApiService } from '../../shared/services/api.service';
 export class ListDetailsComponent implements OnInit {
 
   currentListDetail: ListDetails | null | undefined = undefined;
+
+  @Output() selectedItemChange = new EventEmitter<Item>();
 
   constructor(private apiService: ApiService){
 
@@ -21,5 +24,9 @@ export class ListDetailsComponent implements OnInit {
         this.currentListDetail = data;
       }
     })
+  }
+
+  selectItem(item: Item){
+    this.selectedItemChange.emit(item);
   }
 }
