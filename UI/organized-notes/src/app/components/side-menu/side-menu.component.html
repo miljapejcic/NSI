@@ -1,8 +1,9 @@
-<aside class="bg-indigo-950 text-white h-full w-full">
-  <div class="p-4">
-    <h2 class="text-xl font-semibold mb-4">Menu</h2>
+<aside class="flex h-screen bg-purple-300">
+  <div class="w-full p-4">
+    <h2 class="text-3xl font-bold mb-5 mt-2 text-gray-700">Menu</h2>
     <div *ngFor="let list of lists">
-      <button (click)="selectList(list._id)" [ngClass]="{'bg-blue-500 text-white': list._id === selectedListId}">
+      <button class="w-full text-left text-gray-800 font-semibold text-xl py-2 px-4 hover:bg-purple-500 hover:text-white rounded"
+        (click)="selectList(list._id)" [ngClass]="{'bg-purple-500 text-white': list._id === selectedListId}">
         {{list.name}}
       </button>
     </div>

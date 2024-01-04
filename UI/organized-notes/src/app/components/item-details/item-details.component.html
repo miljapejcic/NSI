@@ -1,23 +1,25 @@
-
 <div class="max-w-md mx-auto p-4">
-    <h2 class="text-2xl font-semibold mb-4">{{ isNewItem ? 'Create New Item' : 'Update Item' }}</h2>
-  
-    <form [formGroup]="itemForm">
-      <div class="mb-4">
-        <label for="itemName" class="block text-sm font-medium text-gray-700">Item Name</label>
-        <input type="text" id="itemName" formControlName="name" class="form-input mt-1 block w-full" required>
-      </div>
+  <h2 class="text-3xl text-gray-900 font-semibold mb-4">{{ isNewItem ? 'Create New Item' : 'Update Item' }}</h2>
 
-      <div class="mb-4">
-        <label for="itemDescription" class="block text-sm font-medium text-gray-700">Item Description</label>
-        <textarea name="itemDescription" id="itemDescription" cols="45" rows="10">{{item?.description}}</textarea>
-      </div>
+  <form [formGroup]="itemForm">
+    <div class="mb-4">
+      <label for="itemName" class="block text-gray-800 mb-2">Item Name</label>
+      <input type="text" id="itemName" formControlName="name" class="w-full px-3 py-2 bg-white-800 text-white rounded"
+        required>
+    </div>
 
-  
-      <div class="flex items-center">
-        <button type="submit" class="bg-indigo-800 text-white px-4 py-2 rounded">Save</button>
-        <button type="button" (click)="onCancel()" class="ml-2 text-gray-600">Cancel</button>
-      </div>
-    </form>
-  </div>
-  
+    <div class="mb-4">
+      <label for="itemDescription" class="block text-gray-800 mb-2">Item Description</label>
+      <textarea name="itemDescription" id="itemDescription" cols="45" rows="10"
+        class="rounded">{{item?.description}}</textarea>
+    </div>
+
+
+    <div class="flex items-center">
+      <button type="submit"
+        class="mr-2 bg-purple-600 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded">Save</button>
+      <button type="button" (click)="onCancel()"
+        class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+    </div>
+  </form>
+</div>

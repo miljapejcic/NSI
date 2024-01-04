@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="flex flex-row h-[90vh]">
 <app-side-menu class="w-1/4 h-full" (selectedItemChange)="onItemSelected($event)"></app-side-menu>
-<app-list-details class="w-1/2 h-full bg-indigo-100 border-r-2 border-indigo-200" (selectedItemChange)="onItemSelected($event)"></app-list-details>
-<app-item-details class="w-1/4 h-full bg-indigo-100" [item]="selectedItem"></app-item-details>
+<app-list-details class="w-1/2 h-full bg-purple-100 border-r-2 border-indigo-200" (selectedItemChange)="onItemSelected($event)"></app-list-details>
+<app-item-details class="w-1/4 h-full bg-purple-200" [item]="selectedItem"></app-item-details>
 </div>

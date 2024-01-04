@@ -11,7 +11,7 @@ describe('SideMenuComponent', () => {
       declarations: [SideMenuComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(SideMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -21,3 +21,11 @@ describe('SideMenuComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+function beforeEach(arg0: () => Promise<void>) {
+  throw new Error('Function not implemented.');
+}
+
+function expect(component: SideMenuComponent) {
+  throw new Error('Function not implemented.');
+}
