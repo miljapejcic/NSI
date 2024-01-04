@@ -13,20 +13,33 @@ export class ListDetailsComponent implements OnInit {
   currentListDetail: ListDetails | null | undefined = undefined;
 
   @Output() selectedItemChange = new EventEmitter<Item>();
+  @Output() createNewItemChange = new EventEmitter<{ isNewItem: boolean, listId: string }>();
 
-  constructor(private apiService: ApiService){
+
+  constructor(private apiService: ApiService) {
 
   }
 
   ngOnInit(): void {
-    this.apiService.currentListDetail$.subscribe((data)=>{
-      if(data !== undefined){
+    this.apiService.currentListDetail$.subscribe((data) => {
+      if (data !== undefined) {
         this.currentListDetail = data;
       }
     })
   }
 
-  selectItem(item: Item){
+  selectItem(item: Item) {
     this.selectedItemChange.emit(item);
+  }
+
+  createItem() {
+    if (this.currentListDetail?.list._id) {
+      this.createNewItemChange.emit({ isNewItem: true, listId: this.currentListDetail?.list._id });
+    }
+    //TODO: ubaci disable button
+
+  }
+  updateItem(item: Item) {
+    this.apiService.updateItem(item._id, {...item})
   }
 }

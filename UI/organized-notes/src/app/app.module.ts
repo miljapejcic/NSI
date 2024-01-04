@@ -11,6 +11,9 @@ import { ItemDetailsComponent } from './components/item-details/item-details.com
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
+import { NgxColorsModule } from 'ngx-colors';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -24,10 +27,12 @@ import { HeaderComponent } from './components/header/header.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxColorsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

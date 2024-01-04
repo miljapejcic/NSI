@@ -1,7 +1,7 @@
-<div class="max-w-md mx-auto p-4">
+<div class="h-full w-full flex flex-col justify-between">
+  <div class="max-w-md p-4">
     <h2 class="text-2xl font-semibold mb-4">{{ currentListDetail?.list?.name }}</h2>
-  
-    <ul>
+    <ul *ngIf="currentListDetail?.itemList?.length">
       <li *ngFor="let item of currentListDetail?.itemList" class="flex items-center mb-2">
         <input type="checkbox" id="{{ item._id }}" [(ngModel)]="item.isDone" class="form-checkbox h-5 w-5 text-blue-500">
         <label for="{{ item._id }}" class="ml-2 {{ item.isDone ? 'line-through text-gray-500' : '' }}" (click)="selectItem(item)">
@@ -9,4 +9,11 @@
         </label>
       </li>
     </ul>
+    <div *ngIf="currentListDetail && !currentListDetail?.itemList?.length">
+      <h5>Currently no items in this list.</h5>
+    </div>
   </div>
+  <div class="p-4">
+    <button *ngIf="currentListDetail" (click)="createItem()" class="bg-indigo-600 text-white px-4 py-2 rounded">Create List Item</button>
+  </div>
+</div>

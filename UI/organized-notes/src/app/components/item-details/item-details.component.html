@@ -1,7 +1,8 @@
 
 <div class="max-w-md mx-auto p-4">
-    <h2 class="text-2xl font-semibold mb-4">{{ isNewItem ? 'Create New Item' : 'Update Item' }}</h2>
-  
+   <div *ngIf="!isNewItem && !item">No items selected.</div>
+   <div *ngIf=" (isNewItem && isNewItem.isNewItem) || item">
+    <h2 class="text-2xl font-semibold mb-4">{{ (isNewItem && isNewItem.isNewItem) ? 'Create New Item' : 'Update Item' }}</h2>
     <form [formGroup]="itemForm">
       <div class="mb-4">
         <label for="itemName" class="block text-sm font-medium text-gray-700">Item Name</label>
@@ -10,14 +11,18 @@
 
       <div class="mb-4">
         <label for="itemDescription" class="block text-sm font-medium text-gray-700">Item Description</label>
-        <textarea name="itemDescription" id="itemDescription" cols="45" rows="10">{{item?.description}}</textarea>
+        <textarea name="itemDescription" id="itemDescription" formControlName="description" cols="45" rows="10"></textarea>
+      </div>
+  
+      <div class="mb-4">
+        <p> {{ item?.isDone ? 'Done' : 'Not Done' }}</p>
       </div>
 
-  
       <div class="flex items-center">
-        <button type="submit" class="bg-indigo-800 text-white px-4 py-2 rounded">Save</button>
-        <button type="button" (click)="onCancel()" class="ml-2 text-gray-600">Cancel</button>
+        <button (click)="onSave()" class="bg-indigo-800 text-white px-4 py-2 rounded">Save</button>
+        <button (click)="onCancel()" class="ml-2 text-gray-600">Cancel</button>
       </div>
     </form>
+   </div>
   </div>
   

@@ -10,6 +10,7 @@ import { Item } from '../../shared/interfaces/item.interface';
 export class HomeComponent {
 
   selectedItem: Item | null = null;
+  isNewItem!: {isNewItem: boolean, listId: string} | null;
   constructor(public authService: AuthService){
 
   }
@@ -19,6 +20,10 @@ export class HomeComponent {
   }
 
   onItemSelected(event: Item | null){
-    this.selectedItem = event;    
+    this.selectedItem = event;
+    this.isNewItem = null;
+  }
+  onCreateNewItem(event: {isNewItem: boolean, listId: string}){
+    this.isNewItem = event;
   }
 }

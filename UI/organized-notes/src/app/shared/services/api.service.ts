@@ -25,7 +25,8 @@ constructor(private http: HttpClient, private router: Router, private authServic
 createList(sendData: {name: string, color?:string}){
   const userId = this.authService.currentUserSignal()?.id;
   this.http.post<List>(this.apiUrl+`list/createList/${userId}`, sendData).subscribe((data)=>{
-    this.router.navigate(['list/'+data._id]);
+    this.getUsersLists();
+    this.getList(data._id);
   })
 }
 
@@ -51,7 +52,7 @@ deleteList(listId: string){
 
 createItem(listId: string, sendData: {name:string, description?:string}){
   this.http.post<Item>(this.apiUrl+`item/createItem/${listId}`, sendData).subscribe((data)=>{
-    console.log(data);
+    this.getList(listId);
   })
 }
 
@@ -63,7 +64,7 @@ deleteItem(itemId: string){
 
 updateItem(itemId: string, sendData: {name: string, description?:string, isDone: boolean, listId: string}){
   this.http.put(this.apiUrl+`item/updateItem/${itemId}`, sendData).subscribe((data)=>{
-    console.log(data);
+    this.getList(sendData.listId);
   })
 }
 
