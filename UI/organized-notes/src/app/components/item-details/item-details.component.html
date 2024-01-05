@@ -5,21 +5,21 @@
     <form [formGroup]="itemForm">
       <div class="mb-4">
         <label for="itemName" class="block text-sm font-medium text-gray-700">Item Name</label>
-        <input type="text" id="itemName" formControlName="name" class="form-input mt-1 block w-full" required>
+        <input type="text" id="itemName" formControlName="name" class="form-input mt-1 p-2 block w-full rounded" required>
       </div>
 
       <div class="mb-4">
         <label for="itemDescription" class="block text-sm font-medium text-gray-700">Item Description</label>
-        <textarea name="itemDescription" id="itemDescription" formControlName="description" cols="45" rows="10"></textarea>
+        <textarea name="itemDescription" id="itemDescription" formControlName="description" class="rounded p-2" cols="45" rows="10"></textarea>
       </div>
 
       <div class="mb-4">
         <p> {{ item?.isDone ? 'Done' : 'Not Done' }}</p>
       </div>
 
-      <div class="flex items-center">
-        <button (click)="onSave()" class="bg-indigo-800 text-white px-4 py-2 rounded">Save</button>
-        <button (click)="onCancel()" class="ml-2 text-gray-600">Cancel</button>
+      <div class="flex">
+        <button (click)="onSave()" class="bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded mr-2">Save</button>
+        <button (click)="onCancel()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
       </div>
     </form>
    </div>

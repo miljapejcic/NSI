@@ -1,18 +1,18 @@
-<aside class="bg-indigo-950 h-full w-full flex flex-col justify-between">
-  <div class="p-4">
-    <h2 class="text-xl font-semibold mb-4">Menu</h2>
+<aside class="bg-purple-200 h-full w-full flex flex-col justify-between">
+  <div class="w-full p-4">
+    <h2 class="text-2xl font-semibold mb-4">Menu</h2>
     <div *ngFor="let list of lists">
-      <button (click)="selectList(list._id)" [ngClass]="{'bg-blue-500': list._id === selectedListId}">
+      <button class="w-full rounded text-left p-1" (click)="selectList(list._id)" [ngClass]="{'bg-purple-500': list._id === selectedListId}">
         {{list.name}}
       </button>
     </div>
   </div>
   <div class="p-4">
-    <button *ngIf="!createNewList" (click)="createNewList=true" class="bg-indigo-600 text-white px-4 py-2 rounded">New list</button>
+    <button *ngIf="!createNewList" (click)="createNewList=true" class="bg-purple-800 text-white px-4 py-2 rounded">New list</button>
     <div *ngIf="createNewList">
       <form [formGroup]="newListForm">
         <div class="mb-4">
-          <label for="item" class="block text-sm font-medium text-gray-700">Item Name</label>
+          <label for="item" class="block text-x1 font-medium text-gray-700">Item Name</label>
           <input type="text" id="item" formControlName="name" class="form-input mt-1 block w-full" required>
         </div>
 
@@ -21,8 +21,8 @@
           <ngx-colors ngx-colors-trigger formControlName="color"></ngx-colors>
         </div>
 
-        <button (click)="createList()" class="bg-indigo-600 text-white px-4 py-2 rounded">Create List</button>
-        <button (click)="cancel()" class="bg-red-800 text-white px-4 py-2 rounded">Cancel</button>
+        <button (click)="createList()" class="bg-purple-600 text-white px-4 py-2 rounded mr-2 hover:bg-purple-700">Create List</button>
+        <button (click)="cancel()" class="bg-gray-700 text-white px-4 py-2 rounded">Cancel</button>
       </form>
     </div>
   </div>
