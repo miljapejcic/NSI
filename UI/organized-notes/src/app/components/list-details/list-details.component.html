@@ -4,7 +4,7 @@
     <ul *ngIf="currentListDetail?.itemList?.length">
       <li *ngFor="let item of currentListDetail?.itemList" class="flex items-center mb-2">
         <input type="checkbox" id="{{ item._id }}" [(ngModel)]="item.isDone" class="form-checkbox h-5 w-5">
-        <label for="{{ item._id }}" class="ml-2 {{ item.isDone ? 'line-through text-gray-800' : '' }}" (click)="selectItem(item)">
+        <label class="ml-2 {{ item.isDone ? 'line-through text-gray-800' : '' }}" (click)="selectItem(item)">
           {{ item.name }}
         </label>
       </li>
