@@ -44,6 +44,9 @@ export class ItemDetailsComponent {
 
   onCancel() {
     this.isNewItem = null;
+    if(this.item){
+      this.apiService.getList(this.item?.listId);
+    }
     this.item = null;
     this.itemForm.reset();
   }
