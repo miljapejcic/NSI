@@ -1,27 +1,28 @@
-<div class="max-w-md mx-auto p-4">
-   <div *ngIf="!isNewItem && !item">No items selected.</div>
-   <div *ngIf=" (isNewItem && isNewItem.isNewItem) || item">
-    <h2 class="text-2xl font-semibold mb-4">{{ (isNewItem && isNewItem.isNewItem) ? 'Create New Item' : 'Update Item' }}</h2>
-    <form [formGroup]="itemForm">
-      <div class="mb-4">
-        <label for="itemName" class="block text-sm font-medium text-gray-700">Item Name</label>
-        <input type="text" id="itemName" formControlName="name" class="form-input mt-1 p-2 block w-full rounded" required>
-      </div>
-
-      <div class="mb-4">
-        <label for="itemDescription" class="block text-sm font-medium text-gray-700">Item Description</label>
-        <textarea name="itemDescription" id="itemDescription" formControlName="description" class="rounded p-2" cols="45" rows="10"></textarea>
-      </div>
-
-      <div class="mb-4">
-        <p> {{ item?.isDone ? 'Done' : 'Not Done' }}</p>
-      </div>
-
-      <div class="flex">
-        <button (click)="onSave()" class="bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded mr-2">Save</button>
-        <button (click)="onCancel()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
-      </div>
-    </form>
+<div class="max-w-md mx-auto p-4 h-full">
+  <div class="flex flex-col h-full justify-between">
+     <div *ngIf="!isNewItem && !item">No items selected.</div>
+     <div *ngIf=" (isNewItem && isNewItem.isNewItem) || item">
+      <h2 class="text-2xl font-semibold mb-4">{{ (isNewItem && isNewItem.isNewItem) ? 'Create New Item' : 'Update Item' }}</h2>
+      <form [formGroup]="itemForm">
+        <div class="mb-4">
+          <label for="itemName" class="block text-sm font-medium text-gray-700">Item Name</label>
+          <input type="text" id="itemName" formControlName="name" class="form-input mt-1 p-2 block w-full rounded" required>
+        </div>
+  
+        <div class="mb-4">
+          <label for="itemDescription" class="block text-sm font-medium text-gray-700">Item Description</label>
+          <textarea name="itemDescription" id="itemDescription" formControlName="description" class="rounded p-2" cols="45" rows="10"></textarea>
+        </div>
+  
+        <div class="flex">
+          <button (click)="onSave()" class="bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded mr-2">Save</button>
+          <button (click)="onCancel()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Cancel</button>
+        </div>
+      </form>
+     </div>
+     <div *ngIf="item" class="flex justify-end">
+      <button (click)="deleteItem()" class="bg-red-700 text-white px-4 font-bold py-2 rounded">Delete Item</button>
+     </div>
    </div>
   </div>
 

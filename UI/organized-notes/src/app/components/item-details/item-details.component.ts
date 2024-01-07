@@ -27,21 +27,19 @@ export class ItemDetailsComponent {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // This method will be called whenever the input property changes
     if (changes['item']) {
       this.isNewItem = null;
 
       this.itemForm = this.fb.group({
         name: [this.item?.name, Validators.required],
         description: [this.item?.description],
-        isDone: [this.item?.isDone]
       });
+      return;
     }
     if(changes['isNewItem']){
       this.itemForm = this.fb.group({
         name: ['', Validators.required],
         description: [''],
-        isDone: [false]
       });
     }
   }
@@ -54,9 +52,7 @@ export class ItemDetailsComponent {
   }
 
   onSave() {
-    if (this.isNewItem) {
-      console.log(this.itemForm.get('description')!.value);
-      
+    if (this.isNewItem) {      
       if (this.itemForm.get('name')?.value) {
         this.apiService.createItem(this.isNewItem.listId, { name: this.itemForm.get('name')!.value, description: this.itemForm.get('description')!.value })
       }
@@ -69,5 +65,12 @@ export class ItemDetailsComponent {
     this.item = null;
     this.isNewItem = null;
     this.itemForm.reset();
+  }
+
+  deleteItem(){
+    if(this.item){
+      this.apiService.deleteItem(this.item?._id, this.item.listId);
+      this.item = null;
+    }
   }
 }

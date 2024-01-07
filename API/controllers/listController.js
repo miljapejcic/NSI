@@ -52,9 +52,9 @@ const DeleteList = async (req, res) => {
         const count = await Item.deleteMany({ listId })
         List.deleteOne({ _id: listId })
             .then(() => {
-                res.status(200).send("List deleted successfully.")
+                res.status(200).send({ message: "List deleted successfully." })
             }).catch((err) => {
-                res.status(404).send('List not found.')
+                res.status(404).send({ message: "List not found." })
             })
     }
     catch (err) {

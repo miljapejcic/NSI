@@ -45,8 +45,9 @@ getList(listId: string){
 }
 
 deleteList(listId: string){
-  this.http.delete(this.apiUrl+`list/deleteList/${listId}`).subscribe(()=>{
+  this.http.delete(this.apiUrl+`list/deleteList/${listId}`).subscribe((data)=>{
     this.router.navigate(['/']);
+    this.currentListDetail.next(null);
   })
 }
 
@@ -56,9 +57,9 @@ createItem(listId: string, sendData: {name:string, description?:string}){
   })
 }
 
-deleteItem(itemId: string){
+deleteItem(itemId: string, listId: string){
   this.http.delete(this.apiUrl+`item/deleteItem/${itemId}`).subscribe((data)=>{
-    console.log(data);
+    this.getList(listId);
   })
 }
 

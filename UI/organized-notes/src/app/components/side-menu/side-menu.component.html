@@ -1,14 +1,17 @@
 <aside class="bg-purple-200 h-full w-full flex flex-col justify-between">
   <div class="w-full p-4">
     <h2 class="text-2xl font-semibold mb-4">Menu</h2>
+    <div *ngIf="!lists?.length">
+      You don't have any lists.
+    </div>
     <div *ngFor="let list of lists">
-      <button class="w-full rounded text-left p-1" (click)="selectList(list._id)" [ngClass]="{'bg-purple-500': list._id === selectedListId}">
+      <button class="w-full rounded text-left p-1" [style.color]="list?.color || 'black'" (click)="selectList(list._id)" [ngClass]="{'bg-purple-500': list._id === selectedListId}">
         {{list.name}}
       </button>
     </div>
   </div>
   <div class="p-4">
-    <button *ngIf="!createNewList" (click)="createNewList=true" class="bg-purple-800 text-white px-4 py-2 rounded">New list</button>
+    <button *ngIf="!createNewList" (click)="createNewList=true" class="bg-purple-800 text-white font-bold px-4 py-2 rounded">New list</button>
     <div *ngIf="createNewList">
       <form [formGroup]="newListForm">
         <div class="mb-4">
@@ -21,8 +24,8 @@
           <ngx-colors ngx-colors-trigger formControlName="color"></ngx-colors>
         </div>
 
-        <button (click)="createList()" class="bg-purple-600 text-white px-4 py-2 rounded mr-2 hover:bg-purple-700">Create List</button>
-        <button (click)="cancel()" class="bg-gray-700 text-white px-4 py-2 rounded">Cancel</button>
+        <button (click)="createList()" class="bg-purple-600 text-white font-bold px-4 py-2 rounded mr-2 hover:bg-purple-700">Create List</button>
+        <button (click)="cancel()" class="bg-gray-700 text-white font-bold px-4 py-2 rounded">Cancel</button>
       </form>
     </div>
   </div>

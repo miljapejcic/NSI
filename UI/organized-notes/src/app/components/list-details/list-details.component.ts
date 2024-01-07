@@ -36,10 +36,16 @@ export class ListDetailsComponent implements OnInit {
     if (this.currentListDetail?.list._id) {
       this.createNewItemChange.emit({ isNewItem: true, listId: this.currentListDetail?.list._id });
     }
-    //TODO: ubaci disable button
-
   }
   updateItem(item: Item) {
     this.apiService.updateItem(item._id, {...item})
+  }
+
+  deleteList(){
+    if (this.currentListDetail?.list._id) {
+      this.apiService.deleteList(this.currentListDetail?.list._id);
+      this.selectedItemChange.emit(undefined);
+      this.createNewItemChange.emit(undefined);
+    }
   }
 }

@@ -40,9 +40,9 @@ const DeleteItem = async (req, res) => {
         const itemId = req.params.itemId;
         Item.deleteOne({ _id: itemId })
             .then(() => {
-                res.status(200).send("Item deleted successfully.")
+                res.status(200).send({ message: "Item deleted successfully." })
             }).catch((err) => {
-                res.status(404).send('Item not found.')
+                res.status(404).send({ message: "Item not found." })
             })
     }
     catch (err) {
