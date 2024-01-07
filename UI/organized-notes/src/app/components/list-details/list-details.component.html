@@ -1,6 +1,6 @@
 <div class="h-full w-full flex flex-col justify-between" *ngIf="currentListDetail">
   <div class="max-w-md p-4">
-    <h2 class="text-2xl font-semibold mb-4" [style.color]="currentListDetail?.list?.color || 'black'">{{ currentListDetail?.list?.name }}</h2>
+    <h2 class="text-2xl font-semibold mb-4" [style.color]="currentListDetail.list.color || 'black'">{{ currentListDetail.list.name }}</h2>
     <ul *ngIf="currentListDetail?.itemList?.length">
       <li *ngFor="let item of currentListDetail?.itemList" class="flex items-center mb-2">
         <input type="checkbox" id="{{ item._id }}" [(ngModel)]="item.isDone" class="form-checkbox h-5 w-5" (change)="updateItem(item)">

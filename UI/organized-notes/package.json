@@ -1,12 +1,14 @@
 {
   "name": "organized-notes",
   "version": "0.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "electron": "ng build && electron ."
   },
   "private": true,
   "dependencies": {
@@ -18,6 +20,8 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
+    "electron": "^28.1.1",
+    "electron-packager": "^17.1.2",
     "ngx-colors": "^3.5.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

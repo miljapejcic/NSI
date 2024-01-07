@@ -4,7 +4,7 @@ const secret_string = 'secretstringzajsonwebtoken';
 
 const createToken = (id) => {
     return jwt.sign({ id }, secret_string, {
-        expiresIn: '3600s'
+        expiresIn: '30d'
     });
 }
 

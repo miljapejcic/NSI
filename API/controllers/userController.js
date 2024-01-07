@@ -11,7 +11,6 @@ const CreateUser = async (req, res) => {
             password: hash,
             name: req.body.name,
         });
-        console.log(user)
         let token = jwttoken.createToken(user._id);
         let sendInfo = {
             id: user._id,
@@ -52,19 +51,6 @@ const LoginUser = async (req, res) => {
     }
 }
 
-// const VerifyUser = (req, res) => {
-//     const token = req.body.token;
-//     console.log(token)
-
-//     if (!token) {
-//       return res.status(403).send('Token not provided');
-//     }
-  
-//     jwt.verify(token, 'secretstringzajsonwebtoken', function(err, decoded) {
-//         console.log(decoded) // bar
-//       });
-//   };
-
 const VerifyUser = async (req, res) => {
     try {
         const token = req.body.token;
@@ -74,7 +60,6 @@ const VerifyUser = async (req, res) => {
         const decoded = jwt.verify(token, 'secretstringzajsonwebtoken');
         const _id = decoded.id;
         const user = await User.findOne({ _id });
-        console.log(user);
         let sendInfo = {
             id: user._id,
             name: user.name,
@@ -84,7 +69,6 @@ const VerifyUser = async (req, res) => {
         res.status(200).send(sendInfo);
     }
     catch (err) {
-        console.log(err)
         res.status(500).send(err.message)
     }
 }

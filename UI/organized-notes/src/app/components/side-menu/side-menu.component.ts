@@ -51,8 +51,6 @@ export class SideMenuComponent implements OnInit {
       if (this.newListForm.valid) {
         let listName = this.newListForm.get('name')?.value;
         let color = this.newListForm.get('color')?.value;
-        console.log(listName);
-        console.log(color);
         this.apiService.createList({name: listName, color:color});
         this.newListForm.reset();
         this.createNewList = false;

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { User } from '../../shared/interfaces/user.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
 
@@ -29,18 +28,13 @@ export class RegisterComponent {
   }
 
   register() {
-    // Add your registration logic here
-    console.log('Registration data:', this.registrationForm.value);
     this.authService.register(this.registrationForm.value);
     this.resetFormData();
   }
 
   login() {
-    // Add your login logic here
-    console.log('Login data:', this.loginForm.value);
     this.authService.login(this.loginForm.value);
     this.resetFormData();
-    // You can send the login data to your backend server for authentication
   }
 
   toggleForm() {
