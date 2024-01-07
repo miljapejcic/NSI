@@ -10,5 +10,4 @@ How to run:
 6. Run cd ../UI/organized-notes
 7. Run npm install
 8. Run npm start
-9. Run http://localhost:4200 (default port for Angular apps)
-10. Run npm run electron
+10. In another terminal, in the same directory (organized-notes), run npm run electron
