@@ -10,8 +10,6 @@ import { ApiService } from '../../shared/services/api.service';
 })
 export class ItemDetailsComponent {
   @Input() item: Item | null = null;
-
-
   @Input() isNewItem!: { isNewItem: boolean, listId: string } | null;
 
   itemForm!: FormGroup;
@@ -43,7 +41,6 @@ export class ItemDetailsComponent {
       });
     }
   }
-
 
   onCancel() {
     this.isNewItem = null;
