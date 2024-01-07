@@ -11,11 +11,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-
 app.use('/api/auth', auth);
 app.use('/api/item', item);
 app.use('/api/list', list);
-
 
 const dbURI = 'mongodb+srv://organizedNotes5:OrganizedNotes321@organizednotescluster.nejauvm.mongodb.net/organizedNotes?retryWrites=true&w=majority';
 mongoose.connect(dbURI).then((result) => {

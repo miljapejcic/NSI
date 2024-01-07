@@ -1,7 +1,6 @@
 const { List } = require('../models/listModel')
 const { Item } = require('../models/itemModel')
 
-
 const CreateList = async (req, res) => {
     try {
         List.create({
