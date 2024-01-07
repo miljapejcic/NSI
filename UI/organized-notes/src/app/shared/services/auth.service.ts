@@ -12,6 +12,7 @@ export class AuthService {
   readonly apiUrl = 'http://localhost:5000/api/auth/';
 
   currentUserSignal = signal<AuthUser | null>(null);
+  errorMessageSignal = signal<string | null>(null);
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -20,8 +21,13 @@ export class AuthService {
       this.currentUserSignal.set(response);
       localStorage.setItem('token', response.token);
       localStorage.setItem('id', response.id);
-
       this.router.navigate(['/']);
+      this.errorMessageSignal.set(null);
+    },
+    (error) => {
+      if (error.status === 409) {
+       this.errorMessageSignal.set(error.error);
+      }
     })
   }
 
@@ -31,6 +37,12 @@ export class AuthService {
       localStorage.setItem('token', response.token);
       localStorage.setItem('id', response.id);
       this.router.navigate(['/']);
+      this.errorMessageSignal.set(null);
+    },
+    (error) => {
+      if (error.status === 401 || error.status===404) {
+        this.errorMessageSignal.set(error.error);
+      }
     })
   }
 

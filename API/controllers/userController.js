@@ -5,12 +5,14 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt')
 
 const CreateUser = async (req, res) => {
-    bcrypt.hash(req.body.password, 10).then(async hash => {
+    try {
+        const hash = await bcrypt.hash(req.body.password, 10);
         const user = await User.create({
             username: req.body.username,
             password: hash,
             name: req.body.name,
         });
+
         let token = jwttoken.createToken(user._id);
         let sendInfo = {
             id: user._id,
@@ -18,9 +20,13 @@ const CreateUser = async (req, res) => {
             username: user.username,
             token: token
         };
+
         res.status(200).send(sendInfo);
-    }).catch(err => res.status(500).send(err.message))
+    } catch (error) {
+        res.status(409).send('Username is already taken.');
+    }
 }
+
 
 const LoginUser = async (req, res) => {
     try {
@@ -39,11 +45,11 @@ const LoginUser = async (req, res) => {
                 res.status(200).send(sendInfo)
             }
             else {
-                res.status(401).send('Incorrect password!')
+                res.status(401).send('Incorrect password.')
             }
         }
         else {
-            res.status(404).send('Username doesn\'t exist!')
+            res.status(404).send('Username doesn\'t exist.')
         }
     }
     catch (err) {

@@ -12,7 +12,7 @@ export class RegisterComponent {
   loginForm!: FormGroup;
   isLoginForm = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
+  constructor(private formBuilder: FormBuilder, protected authService: AuthService) {}
 
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
@@ -39,6 +39,7 @@ export class RegisterComponent {
 
   toggleForm() {
     this.isLoginForm = !this.isLoginForm;
+    this.authService.errorMessageSignal.set(null);
     this.resetFormData();
   }
 
