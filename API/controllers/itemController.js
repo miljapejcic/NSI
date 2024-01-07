@@ -50,21 +50,8 @@ const DeleteItem = async (req, res) => {
     }
 }
 
-
-const GetListItems = async (req, res) => {
-    try {
-        const listId = req.params.listId;
-        let listsItems = await Item.find({ listId });
-        res.status(200).send(listsItems);
-    }
-    catch (err) {
-        res.status(500).send(err.message)
-    }
-}
-
 module.exports = {
     CreateItem,
     UpdateItem,
-    DeleteItem,
-    GetListItems
+    DeleteItem
 }
