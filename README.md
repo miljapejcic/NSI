@@ -10,4 +10,5 @@ How to run:
 6. Run cd ../UI/organized-notes
 7. Run npm install
 8. Run npm start
-9. The CLI will notify you which port it is using and then in your browser just run: localhost:PORT_NUMBER
+9. Run http://localhost:4200 (default port for Angular apps)
+10. Run npm run electron
